@@ -12,6 +12,8 @@ import 'package:get/get.dart';
 import 'analog_clock_painter.dart';
 
 class MyAlarmApp extends StatelessWidget {
+
+  ///initialize all value in controller
   final MyAlarmController _myAlarmController = Get.put(MyAlarmController());
   final HourHandController _hourHandController = Get.put(HourHandController());
   final MinuteHandController _minuteHandController =
@@ -21,6 +23,7 @@ class MyAlarmApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ///initialize painter to create clock
     ClockPainter clockPainter = ClockPainter(
         wheelSize: _myAlarmController.wheelSize,
         longNeedleHeight: _myAlarmController.longNeedleHeight,
@@ -40,6 +43,7 @@ class MyAlarmApp extends StatelessWidget {
         elevation: 0,
         centerTitle: false,
         actions: [
+          ///for turn on and turn off alarm
           Obx(() => Align(
                 alignment: Alignment.center,
                 child: Text(
@@ -82,6 +86,7 @@ class MyAlarmApp extends StatelessWidget {
       ),
       body: Column(
         children: [
+          ///show time in digital format HH:mm, when the first application is opened, the clock will show 00:00 AM
           Padding(
             padding: const EdgeInsets.only(top: 80),
             child: Row(
@@ -149,6 +154,7 @@ class MyAlarmApp extends StatelessWidget {
           Stack(
             alignment: Alignment.center,
             children: [
+              ///Make a circle to form the clock and the numbers
               SizedBox(
                 width: _myAlarmController.wheelSize,
                 height: _myAlarmController.wheelSize,
@@ -170,7 +176,9 @@ class MyAlarmApp extends StatelessWidget {
                   ),
                 ),
               ),
+              /// make hands for minutes
               MinuteHand(),
+              /// make hands for hours
               HourHand(),
             ],
           )

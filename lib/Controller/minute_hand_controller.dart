@@ -5,9 +5,14 @@ import 'package:get/get.dart';
 
 class MinuteHandController extends GetxController
     with GetTickerProviderStateMixin {
-  var hour = "0".obs;
+
+  /// defualt minute
   var minute = "0".obs;
+
+  /// for move / slide minute hand
   late AnimationController ctrlMinute;
+
+  /// init degree for minute hand
   double degreeMinute = 0;
   int valueChooseMinute = 0;
   final double wheelSize = 300;
@@ -34,6 +39,7 @@ class MinuteHandController extends GetxController
     return result;
   }
 
+  /// Function for show the number in minutes by calculating the width of the angle
   panUpdateHandlerMinute(DragUpdateDetails d) {
     bool onTop = d.localPosition.dy <= wheelSize / 2;
     bool onLeftSide = d.localPosition.dx <= wheelSize / 2;

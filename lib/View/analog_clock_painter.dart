@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:vector_math/vector_math_64.dart' as vector;
 
+/// This class will circle for hours and numbers
 class ClockPainter extends CustomPainter {
   double wheelSize;
   double longNeedleHeight;

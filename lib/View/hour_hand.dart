@@ -5,7 +5,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+/// Create Hour Hand
 class HourHand extends StatelessWidget {
+
+  /// initialize all value form hour hand
   final HourHandController _hourHandController = Get.put(HourHandController());
 
   HourHand({Key? key}) : super(key: key);

@@ -12,16 +12,24 @@ class MyAlarmController extends GetxController {
   final FlutterLocalNotificationsPlugin _notifications =
       FlutterLocalNotificationsPlugin();
   var controller = StreamController<String?>.broadcast();
+
+  /// flag for Alarm Button
   var isActive = false.obs;
+
+  /// radioValue for AM / PM
   var radioValue = 0.obs;
+
+  /// size for hand clock
   final double wheelSize = 300;
   final double longNeedleHeight = 40;
   final double shortNeedleHeight = 25;
-  var isFirstLaunch = true.obs;
 
   @override
   void onInit() async {
+    /// default AM
     radioValue.value = 0;
+
+    /// initialize notification
     final android = AndroidInitializationSettings('@mipmap/ic_launcher');
     final ios = IOSInitializationSettings();
     final initializationSettings =
@@ -34,6 +42,7 @@ class MyAlarmController extends GetxController {
     super.onInit();
   }
 
+  /// Function for show bar chart
   void onClickNotification(String? payload) async {
     Get.bottomSheet(
         SingleChildScrollView(
@@ -55,6 +64,7 @@ class MyAlarmController extends GetxController {
         backgroundColor: Colors.white);
   }
 
+  /// Function for update active alarm
   void updateSwitch(value) {
     isActive(value);
     if (value == false) {
@@ -62,10 +72,12 @@ class MyAlarmController extends GetxController {
     }
   }
 
+  /// Function for handle am / pm
   void handleRadioValueChange(int value) {
     radioValue.value = value;
   }
 
+  /// Function for set Alarm
   DateTime setAlarm(hour, minute) {
     DateTime now = DateTime.now();
     return DateTime(
@@ -86,6 +98,7 @@ class MyAlarmController extends GetxController {
         int.parse(minute));
   }
 
+  /// Function for scheduling notification
   Future showNotificationSchedule({
     int id = 0,
     String? title,
@@ -104,6 +117,7 @@ class MyAlarmController extends GetxController {
           uiLocalNotificationDateInterpretation:
               UILocalNotificationDateInterpretation.absoluteTime);
 
+  /// Function for notification detail
   Future notificationDetails() async {
     const sound = 'soundalarm.wav';
     return NotificationDetails(
@@ -122,5 +136,6 @@ class MyAlarmController extends GetxController {
         ));
   }
 
+  /// Function for cancel alarm
   void cancel() => _notifications.cancelAll();
 }

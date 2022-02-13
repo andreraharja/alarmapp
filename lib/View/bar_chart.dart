@@ -3,6 +3,7 @@
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart';
 
+/// Create Bar Chart
 class BarChart extends StatelessWidget {
   final List<TimeOpen> data;
   const BarChart({Key? key, required this.data}) : super(key: key);

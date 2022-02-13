@@ -5,7 +5,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+/// Create Minute Hand
 class MinuteHand extends StatelessWidget {
+
+  /// init all value form minute hand
   final MinuteHandController _minuteHandController =
       Get.put(MinuteHandController());
 
