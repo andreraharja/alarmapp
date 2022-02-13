@@ -43,7 +43,7 @@ class MyAlarmController extends GetxController {
   }
 
   /// Function for show bar chart
-  void onClickNotification(String? payload) async {
+  Future onClickNotification(String? payload) async {
     Get.bottomSheet(
         SingleChildScrollView(
           child: BarChart(
